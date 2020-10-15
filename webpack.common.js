@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = ({outputFile, assetFile}) => ({
-	entry: './src/js/index.js',
+	entry: './src/ts/index.tsx',
 	output: {
 		filename: `${outputFile}.js`,
 		chunkFilename: `${outputFile}.js`,
@@ -13,22 +13,12 @@ module.exports = ({outputFile, assetFile}) => ({
 		path: path.resolve(__dirname, 'public'),
 		publicPath: ASSET_PATH
 	},
-	target: ["web", "es5"],
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			},
-			{
-				enforce: 'pre',
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader',
-				options: {
-					fix: true
-				}
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/
 			},
 			{
 				test: /\.scss$/,
@@ -50,7 +40,7 @@ module.exports = ({outputFile, assetFile}) => ({
 				type: 'asset',
 				parser: {
 					dataUrlCondition: {
-						maxSize: 4 * 1024,
+						maxSize: 100 * 1024,
 					}
 				}
 			},
@@ -100,7 +90,8 @@ module.exports = ({outputFile, assetFile}) => ({
 			'@scss': path.resolve(__dirname, 'src/scss'),
 			'@imgs': path.resolve(__dirname, 'src/img')
 		},
-		extensions: ['.js','.scss'],
+		extensions: ['.js', 'ts', 'tsx', '.scss'],
 		modules: [path.resolve(__dirname, 'src'), 'node_modules']
-	}
+	},
+	target: ["web", "es5"]
 });
