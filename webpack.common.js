@@ -90,7 +90,7 @@ module.exports = ({outputFile, assetFile}) => ({
 			'@scss': path.resolve(__dirname, 'src/scss'),
 			'@imgs': path.resolve(__dirname, 'src/img')
 		},
-		extensions: ['.js', 'ts', 'tsx', '.scss'],
+		extensions: ['.js', '.ts', '.tsx', '.scss'],
 		modules: [path.resolve(__dirname, 'src'), 'node_modules']
 	},
 	target: ["web", "es5"]
