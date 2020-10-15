@@ -60,14 +60,14 @@ a {
 	}
 }
 
-.hero {
+.keyVisual {
 	position: relative;
 	height: 551px;
 	background: url(../img/mainvisual.png) center center no-repeat;
 	background-size: cover;
 	color: $secondaryColor;
 	text-align: center;
-	& .hero__inner {
+	&__inner {
 		position: absolute;
 		top: 50%;
 		left: 50%;
